@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import NewTodoForm from '../../containers/NewTodoForm/NewTodoForm'
-
+//import NewTodoForm from '../../containers/NewTodoForm'
+import NewTodoForm from './NewTodoForm/NewTodoForm'
+import { connect } from 'react-redux';
 //list the todos
 const Todolist = ({ todos }) => {
     return (
@@ -26,4 +27,14 @@ Todolist.propTypes = {
     todos: PropTypes.array.isRequired,
 }
 
-export default Todolist;
+const mapStateToProps = (state) => ({
+    todos: state.todolist.todos,
+})
+const mapDispatchToProps = (dispatch) => ({
+})
+const VisibleTodolist = connect(
+    mapStateToProps,
+    null
+)(Todolist)
+
+export default VisibleTodolist
